@@ -1,7 +1,10 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from .views import ProfileListAPIView
+from .views import ProfileViewSet, ProfileStatusViewSet
 
-urlpatterns = [
-    path("profiles/", ProfileListAPIView.as_view(), name="api-profiles-list")
-]
+router = DefaultRouter()
+router.register(r"profiles", ProfileViewSet)
+router.register(r"status", ProfileStatusViewSet)
+
+urlpatterns = [path("", include(router.urls))]
