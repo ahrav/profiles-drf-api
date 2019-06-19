@@ -14,7 +14,7 @@ from .serializers import (
 
 class AvatarUpdateView(UpdateAPIView):
     serializer_class = ProfileAvatarSerializer
-    permission_class = [IsAuthenticated]
+    permission_class = (IsAuthenticated,)
 
     def get_object(self):
         profile_object = self.request.user.profile
@@ -24,14 +24,14 @@ class AvatarUpdateView(UpdateAPIView):
 class ProfileViewSet(ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_class = [IsOwnerProfileOrReadOnly, IsAuthenticated]
+    permission_class = (IsAuthenticated,)
     filter_backends = [SearchFilter]
     search_fields = ["city"]
 
 
 class ProfileStatusViewSet(ModelViewSet):
     serializer_class = ProfileStatusSerializer
-    permission_class = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_class = (IsAuthenticated,)
 
     def get_queryset(self):
         queryset = ProfileStatus.objects.all()

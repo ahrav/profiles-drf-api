@@ -19,7 +19,7 @@ class ProfileStatus(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = 'statuses'
+        verbose_name_plural = "statuses"
 
     def __str__(self):
         return str(self.user.profile)
