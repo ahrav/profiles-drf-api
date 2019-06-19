@@ -12,6 +12,10 @@ black = "*"
 django = "*"
 djangorestframework = "*"
 pillow = "*"
+django-rest-auth = "*"
+requests = "*"
+black = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.7"
